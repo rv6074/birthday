@@ -47,9 +47,9 @@
         </div>
         <div id="gallery-card" class="card w-full max-w-2xl rounded-2xl p-6 mb-12 fade-in delay-3">
             <h2 class="font-playfair text-3xl mb-4 text-center text-gradient">Our Moments</h2>
-            <!-- NEW: This container is now flexible, has a max height of half the screen, and centers the image -->
-            <div class="relative rounded-lg bg-black/20 flex justify-center items-center max-h-[50vh]">
-                <!-- NEW: The image now fits inside the container without being cropped -->
+            <!-- FINAL FIX: This container is now a grid to precisely center the image and clips any overflow -->
+            <div class="relative rounded-lg bg-black/20 grid place-items-center max-h-[50vh] min-h-[250px] overflow-hidden">
+                <!-- The image fits inside the container without being cropped -->
                 <img id="gallery-image" src="" class="max-w-full max-h-full object-contain transition-opacity duration-300" alt="Shared Moment">
                 <div class="absolute inset-0 flex justify-between items-center p-2">
                     <button id="prev-btn" class="bg-white/20 hover:bg-white/40 text-white rounded-full p-2 focus:outline-none transition-transform hover:scale-110">&lt;</button>
@@ -185,5 +185,4 @@
     </script>
 </body>
 </html>
-
 
