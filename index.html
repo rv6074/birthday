@@ -47,10 +47,10 @@
         </div>
         <div id="gallery-card" class="card w-full max-w-2xl rounded-2xl p-6 mb-12 fade-in delay-3">
             <h2 class="font-playfair text-3xl mb-4 text-center text-gradient">Our Moments</h2>
-            <!-- This container now clips the image and forces a 16:9 aspect ratio -->
-            <div class="relative rounded-lg overflow-hidden aspect-video">
-                <!-- The image will now cover this area without distortion -->
-                <img id="gallery-image" src="" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300" alt="Shared Moment">
+            <!-- NEW: This container is now flexible, has a max height of half the screen, and centers the image -->
+            <div class="relative rounded-lg bg-black/20 flex justify-center items-center max-h-[50vh]">
+                <!-- NEW: The image now fits inside the container without being cropped -->
+                <img id="gallery-image" src="" class="max-w-full max-h-full object-contain transition-opacity duration-300" alt="Shared Moment">
                 <div class="absolute inset-0 flex justify-between items-center p-2">
                     <button id="prev-btn" class="bg-white/20 hover:bg-white/40 text-white rounded-full p-2 focus:outline-none transition-transform hover:scale-110">&lt;</button>
                     <button id="next-btn" class="bg-white/20 hover:bg-white/40 text-white rounded-full p-2 focus:outline-none transition-transform hover:scale-110">&gt;</button>
@@ -93,7 +93,6 @@
                  galleryImage.src = images[0];
             } else {
                  galleryImage.src = 'https://placehold.co/800x450/111827/facc15?text=Gallery+folder+is+empty!';
-                 galleryImage.classList.remove('object-cover'); // Use default behavior for placeholder
             }
 
             if(images.length <= 1) {
@@ -186,4 +185,5 @@
     </script>
 </body>
 </html>
+
 
