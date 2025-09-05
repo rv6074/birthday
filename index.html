@@ -30,7 +30,7 @@
             <p class="text-lg md:text-xl text-gray-300 mt-4">A special day for someone truly special.</p>
         </header>
         <div class="card w-full max-w-2xl rounded-2xl p-6 md:p-8 mb-12 text-center fade-in delay-1">
-            <h2 class="text-2xl font-semibold mb-4 text-amber-300">For Amazing Girl</h2>
+            <h2 class="text-2xl font-semibold mb-4 text-amber-300">An Amazing Journey</h2>
             <div class="flex justify-center">
                 <!-- This now looks for the cake image in the same folder -->
                 <img src="birthday_cake.png" alt="Birthday cake with 20 candles" class="max-h-60 w-auto">
@@ -47,9 +47,10 @@
         </div>
         <div id="gallery-card" class="card w-full max-w-2xl rounded-2xl p-6 mb-12 fade-in delay-3">
             <h2 class="font-playfair text-3xl mb-4 text-center text-gradient">Our Moments</h2>
-            <div class="relative">
-                <!-- The slideshow will load images from your 'gallery' folder -->
-                <img id="gallery-image" src="" class="rounded-lg shadow-lg w-full h-auto transition-opacity duration-300" alt="Shared Moment">
+            <!-- This container now clips the image and forces a 16:9 aspect ratio -->
+            <div class="relative rounded-lg overflow-hidden aspect-video">
+                <!-- The image will now cover this area without distortion -->
+                <img id="gallery-image" src="" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300" alt="Shared Moment">
                 <div class="absolute inset-0 flex justify-between items-center p-2">
                     <button id="prev-btn" class="bg-white/20 hover:bg-white/40 text-white rounded-full p-2 focus:outline-none transition-transform hover:scale-110">&lt;</button>
                     <button id="next-btn" class="bg-white/20 hover:bg-white/40 text-white rounded-full p-2 focus:outline-none transition-transform hover:scale-110">&gt;</button>
@@ -78,16 +79,12 @@
             const nextBtn = document.getElementById('next-btn');
             const prevBtn = document.getElementById('prev-btn');
             
-            // =========================================================================
-            // This code now automatically creates a list of your 30 images.
-            // Just make sure your files are named 'image1.jpg', 'image2.jpg', etc.
-            // =========================================================================
+            // This code automatically creates a list of your 30 images.
+            // Just make sure your files are named 'image1.jpg', 'image2.jpg', etc. in the 'gallery' folder.
             const images = [];
             for (let i = 1; i <= 30; i++) {
-                // It looks for images inside a 'gallery' folder
                 images.push(`gallery/image${i}.jpg`);
             }
-            // =========================================================================
 
             let currentImageIndex = 0;
             let slideInterval;
@@ -95,7 +92,8 @@
             if (images.length > 0) {
                  galleryImage.src = images[0];
             } else {
-                 galleryImage.src = 'https://placehold.co/800x500/111827/facc15?text=Gallery+folder+is+empty!';
+                 galleryImage.src = 'https://placehold.co/800x450/111827/facc15?text=Gallery+folder+is+empty!';
+                 galleryImage.classList.remove('object-cover'); // Use default behavior for placeholder
             }
 
             if(images.length <= 1) {
@@ -188,3 +186,4 @@
     </script>
 </body>
 </html>
+
